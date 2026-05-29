@@ -1,0 +1,161 @@
+/* NAV */
+nav {
+    height: auto !important;
+    min-height: 4rem;
+    background-color: rgb(33, 38, 42);
+}
+
+.navbar-brand {
+    color: rgb(248, 4, 4) !important;
+    font-size: 1.6rem;
+}
+
+.nav-link {
+    color: #faf5f5 !important;
+}
+
+/* SEARCH BAR */
+.search-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    border: 1px solid #f0b3b3;
+    border-radius: 50px;
+    padding: 8px 15px;
+    background: #fff;
+    gap: 6px;
+}
+
+.search-bar:hover {
+    box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+}
+
+.search-section {
+    flex: 1;
+    min-width: 120px;
+}
+
+.search-input,
+.search-select {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+    color: #222;
+}
+
+.search-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #222;
+    letter-spacing: 0.3px;
+}
+
+.search-divider {
+    width: 1px;
+    height: 30px;
+    background: #ddd;
+    flex-shrink: 0;
+}
+
+.search-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+    background: #e6003d !important;
+}
+
+/* LISTING CARD */
+.listing-card {
+    transition: 0.2s ease;
+    border-radius: 12px !important;
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+}
+
+/* MOBILE */
+/* MOBILE */
+@media (max-width: 768px) {
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 20px;
+        padding: 12px;
+    }
+
+    .search-section {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 8px;
+    }
+
+    .search-section:last-of-type {
+        border-bottom: none;
+    }
+
+    .search-divider {
+        display: none !important;
+    }
+
+    .search-input,
+    .search-select {
+        width: 100%;
+    }
+
+    /* ✅ Fix — button stays circle on mobile */
+    .search-btn {
+        width: 48px !important;
+        height: 48px !important;
+        border-radius: 50% !important;
+        align-self: center !important;  /* ✅ centers it */
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+}
+
+/* Add to your style.css */
+
+/* Footer fixes */
+footer {
+    width: 100%;
+    margin-top: auto;
+}
+
+#footerDiv a {
+    color: #adb5bd !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#footerDiv a:hover {
+    color: #ffffff !important;
+}
+
+/* Fix body layout so footer always shows at bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff !important;
+}
+
+/* Main content takes all available space */
+body > .container,
+body > .container-fluid {
+    flex: 1;
+}

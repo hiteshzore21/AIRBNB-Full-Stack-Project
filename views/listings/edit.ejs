@@ -1,0 +1,63 @@
+<%- layout("/layouts/boilerplate") %>
+
+<div class="container mt-4" style="max-width: 600px;">
+  <h2 class="fw-bold mb-4">Edit Listing</h2>
+
+  <form action="/listings/<%= listing._id %>?_method=PUT" 
+    method="POST"
+    enctype="multipart/form-data"
+     class="needs-validation" novalidate>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Title</label>
+      <input name="listings[title]" required type="text" class="form-control" value="<%= listing.title %>">
+       <div class="invalid-feedback">Please enter a Title.</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Description</label>
+      <textarea name="listings[description]" class="form-control" rows="4" required><%= listing.description %></textarea>
+       <div class="invalid-feedback">Please Fill a Description.</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Price (per night)</label>
+      <div class="input-group">
+        <span class="input-group-text">&#8377;</span>
+        <input type="number" required name="listings[price]" class="form-control" value="<%= listing.price %>">
+         <div class="invalid-feedback">Please enter Price.</div>
+      </div>
+    </div>
+    <h5>Original Image - </h5>
+    <div class="mb-3">
+      <img src="<%= listing.image.url %>" alt="">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Upload New Image </label>
+      <input type="file" name="image" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Location</label>
+      <input  required type="text" name="listings[location]" class="form-control" value="<%= listing.location %>">
+       <div class="invalid-feedback">Please enter a Location.</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Country</label>
+      <input required type="text" name="listings[country]" class="form-control" value="<%= listing.country %>">
+       <div class="invalid-feedback">Please enter a country.</div>
+    </div>
+
+    <button type="submit" class="btn btn-dark w-100 mt-2">
+      <i class="bi bi-pencil-fill"></i> Update Listing
+    </button>
+
+  </form>
+
+  <a href="/listings/<%= listing._id %>" class="btn btn-outline-secondary w-100 mt-2 mb-5">
+    <i class="bi bi-arrow-left"></i> Cancel
+  </a>
+
+</div>

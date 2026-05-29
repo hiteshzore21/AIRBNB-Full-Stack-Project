@@ -1,0 +1,58 @@
+<%- layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+    <h3 class="mb-4">
+        Search Results
+    </h3>
+
+    <div class="row">
+
+        <% if(searchedListings.length === 0){ %>
+
+            <h5>No Listings Found</h5>
+
+        <% } %>
+
+        <% for(let listing of searchedListings){ %>
+
+            <div class="col-md-4 mb-4">
+
+                <a href="/listings/<%= listing._id %>"
+                   class="text-decoration-none text-dark">
+
+                    <div class="card shadow-sm border-0">
+
+                        <img
+                            src="<%= listing.image.url %>"
+                            class="card-img-top"
+                            style="height: 220px; object-fit: cover;"
+                        >
+
+                        <div class="card-body">
+
+                            <h5>
+                                <%= listing.title %>
+                            </h5>
+
+                            <p class="text-muted">
+                                <%= listing.location %>
+                            </p>
+
+                            <p class="fw-bold">
+                                ₹<%= listing.price %> / night
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</div>

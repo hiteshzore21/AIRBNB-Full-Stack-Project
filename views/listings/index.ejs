@@ -1,0 +1,125 @@
+<% layout("/layouts/boilerplate") -%>
+
+<div class="container-fluid px-4 mt-4">
+
+  <!-- Top Row: Title + Search -->
+  <div class="row mb-4 align-items-start g-3">
+
+    <!-- Left: Title + Filter Buttons -->
+    <div class="col-12 col-md-5">
+      <h5 class="fw-bold mb-1">Popular stays near you</h5>
+      <p class="small mb-3" style="color: red;">Handpicked homes for your next trip</p>
+      <div class="d-flex flex-wrap gap-2">
+        <button class="btn btn-sm btn-outline-dark">All</button>
+        <button class="btn btn-sm btn-outline-dark">Beach</button>
+        <button class="btn btn-sm btn-outline-dark">Mountain</button>
+        <button class="btn btn-sm btn-outline-dark">City</button>
+        <button class="btn btn-sm btn-outline-dark">Camping</button>
+      </div>
+    </div>
+
+    <!-- Right: Search Bar -->
+    <div class="col-12 col-md-7">
+      <form action="/listings/searchedListings" method="post" 
+        class="needs-validation" novalidate>
+        <div class="search-bar">
+
+          <!-- Where -->
+          <div class="search-section">
+            <p class="search-label mb-0">Where</p>
+            <input
+              type="text"
+              name="search[location]"
+              class="search-input"
+              placeholder="Search destinations"
+              required
+            >
+            <div class="invalid-feedback">Please search something.</div>
+          </div>
+
+          <div class="search-divider d-none d-md-block"></div>
+
+          <!-- Category -->
+          <div class="search-section">
+            <p class="search-label mb-0">Category</p>
+            <select class="search-select" name="search[category]">
+              <option value="" disabled selected>Select type</option>
+              <option value="Mountain">🏔️ Mountain</option>
+              <option value="Beach">🏖️ Beach</option>
+              <option value="Farm">🌾 Farm</option>
+              <option value="Arctic">🧊 Arctic</option>
+              <option value="Camping">⛺ Camping</option>
+              <option value="Desert">🏜️ Desert</option>
+              <option value="Forest">🌲 Forest</option>
+              <option value="Lake">🏞️ Lake</option>
+              <option value="Temple">🛕 Temple</option>
+              <option value="City">🏙️ City</option>
+              <option value="Rooms">🛏️ Rooms</option>
+            </select>
+          </div>
+
+          <div class="search-divider d-none d-md-block"></div>
+
+          <!-- Who -->
+          <div class="search-section">
+            <p class="search-label mb-0">Who</p>
+            <select class="search-select" name="search[guestType]">
+              <option value="">Select Guests</option>
+              <option value="Family">👨‍👩‍👧‍👦 Family</option>
+              <option value="Friends">🧑‍🤝‍🧑 Friends</option>
+              <option value="Couple">💑 Couple</option>
+              <option value="Solo">🧍 Solo</option>
+              <option value="Business">💼 Business</option>
+              <option value="Pet Friendly">🐶 Pet Friendly</option>
+              <option value="Adventure Group">🏕️ Adventure</option>
+              <option value="Honeymoon">❤️ Honeymoon</option>
+            </select>
+          </div>
+
+          <!-- Search Button -->
+          <button type="submit"
+            class="btn btn-danger rounded-circle search-btn d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-magnifying-glass text-white"></i>
+          </button>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <!-- Listing Cards -->
+  <div id="cards" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+    <% for(let listing of allListings){ %>
+    <div class="col">
+      <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+        <div class="card h-100 border-0 shadow-sm listing-card">
+          <img
+            src="<%= listing.image.url %>"
+            class="card-img-top"
+            alt="<%= listing.title %>"
+            style="height: 200px; object-fit: cover; border-radius: 12px 12px 0 0;"
+          >
+          <div class="card-body px-2">
+            <h6 class="card-title fw-bold mb-1"><%= listing.title %></h6>
+            <p class="card-text text-muted mb-0">
+              <span class="fw-semibold text-dark">
+                &#8377;<%= listing.price.toLocaleString("en-IN") %>
+              </span> / night
+            </p>
+            <span class="text-muted small">
+              <i class="bi bi-geo-alt-fill text-danger" style="font-size: 11px;"></i>
+              <%= listing.location %>
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <% } %>
+  </div>
+
+  <hr class="mt-5">
+
+</div>

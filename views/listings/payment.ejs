@@ -1,0 +1,144 @@
+<% layout("/layouts/boilerplate") -%>
+
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-lg-6">
+
+      <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+       
+        <div class="bg-success text-white p-4 text-center">
+          <h2 class="fw-bold">
+            <i class="bi bi-credit-card-fill"></i> Payment
+          </h2>
+
+          <p class="mb-0">
+            Complete your booking payment
+          </p>
+        </div>
+
+        <div class="card-body p-4">
+
+        
+          <div class="mb-4 text-center">
+            <h4 class="fw-bold"><%= listing.title %></h4>
+
+            <img
+              src="<%= listing.image.url %>"
+              class="img-fluid rounded-4 mt-3"
+              style="height: 220px; object-fit: cover;"
+            >
+          </div>
+
+       
+          <form action="/listings/<%= listing._id %>/paymentSuccess" method="POST">
+
+         
+            <div class="mb-3">
+              <label class="form-label fw-semibold">
+                Card Holder Name  
+              </label>
+
+              <input
+                type="text"
+                class="form-control rounded-3"
+                placeholder="Enter card holder name"
+                required
+                
+              >
+            </div>
+
+      
+            <div class="mb-3">
+              <label class="form-label fw-semibold">
+                Card Number
+              </label>
+
+              <input
+                type="text"
+                class="form-control rounded-3"
+                placeholder="1234 5678 9012 3456"
+                maxlength="16"
+                required
+              >
+            </div>
+
+            <div class="row">
+
+           
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">
+                  Expiry Date
+                </label>
+
+                <input
+                  type="month"
+                  class="form-control rounded-3"
+                  required
+                >
+              </div>
+
+              
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">
+                  CVV
+                </label>
+
+                <input
+                  type="password"
+                  class="form-control rounded-3"
+                  placeholder="***"
+                  maxlength="3"
+                  required
+                >
+              </div>
+
+            </div>
+
+          
+            <div class="mb-3">
+              <label class="form-label fw-semibold">
+                UPI ID (Optional)
+              </label>
+
+              <input
+                type="text"
+                class="form-control rounded-3"
+                placeholder="example@upi"
+              >
+            </div>
+
+            <div class="alert alert-light border text-center mt-4">
+
+              <h5 class="fw-bold mb-0">
+                Total Amount :
+                ₹ <%= listing.price.toLocaleString("en-IN") %>
+              </h5>
+
+            </div>
+
+          
+            <div class="d-grid mt-4">
+
+              <button class="btn btn-success btn-lg rounded-3">
+
+                <i class="bi bi-lock-fill"></i>
+                Pay Securely
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

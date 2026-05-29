@@ -1,0 +1,73 @@
+<%- layout("/layouts/boilerplate") %>
+
+<div class="container mt-4" style="max-width: 600px;">
+  <h2 class="fw-bold mb-4">Create New Listing</h2>
+
+  <form action="/listings" method="POST" class="needs-validation" novalidate
+  enctype="multipart/form-data">
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Title</label>
+      <input name="listings[title]" type="text" class="form-control" placeholder="Enter the title" required>
+      <div class="invalid-feedback">Please enter a title.</div>
+      <div class="valid-feedback">Title Looks Good</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Description</label>
+      <textarea name="listings[description]" class="form-control" rows="4" placeholder="Enter the description" required></textarea>
+      <div class="invalid-feedback">Please enter a description.</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Price (per night)</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text">&#8377;</span>
+        <input name="listings[price]" class="form-control" placeholder="Enter the price" required>
+        <div class="invalid-feedback">Please enter a price.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Image Upload</label>
+      <input type="file" name="image" class="form-control" placeholder="Upload the image" required>
+      <div class="invalid-feedback">Please enter an image URL.</div>
+    </div>
+    <div class="mb-3">
+    <label for="category" class="form-label">
+        Select Category
+    </label>
+
+    <select name="listings[category]" class="form-select" required>
+        <option value="Mountain">Mountain</option>
+        <option value="Beach">Beach</option>
+        <option value="Farm">Farm</option>
+        <option value="Arctic">Arctic</option>
+        <option value="Camping">Camping</option>
+        <option value="Desert">Desert</option>
+        <option value="Forest">Forest</option>
+        <option value="Lake">Lake</option>
+        <option value="Temple">Temple</option>
+        <option value="City">City</option>
+        <option value="Rooms">Rooms</option>
+    </select>
+</div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Location</label>
+      <input type="text" name="listings[location]" class="form-control" placeholder="Enter the location" required>
+      <div class="invalid-feedback">Please enter a location.</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Country</label>
+      <input type="text" name="listings[country]" class="form-control" placeholder="Enter the country" required>
+      <div class="invalid-feedback">Please enter a country.</div>
+    </div>
+
+    <button  type="submit" class="btn btn-danger w-100 mt-2 mb-3">
+      <i class="bi bi-plus-circle"></i> Add Listing
+    </button>
+  </form>
+</div>
+
